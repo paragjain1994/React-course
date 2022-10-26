@@ -31,13 +31,17 @@ function App() {
     location: 'Goa',
   }
 ];  
+
+const arrayOfObject =[];
+for(let i=0;i<expenses.length;i++){
+  const items_=  <ExpenseItem1 title = {expenses[i].title} amount = {expenses[i].amount} date = {expenses[i].date} location = {expenses[i].location}></ExpenseItem1>;
+
+  arrayOfObject.push(items_);
+}
   return (
 
     <div>
-  <ExpenseItem1 title = {expenses[0].title} amount = {expenses[0].amount} date = {expenses[0].date} location = {expenses[0].location}></ExpenseItem1>
-    <ExpenseItem1 title = {expenses[1].title} amount = {expenses[1].amount} date = {expenses[1].date} location = {expenses[1].location}></ExpenseItem1>
-    <ExpenseItem1 title = {expenses[2].title} amount = {expenses[2].amount} date = {expenses[2].date} location = {expenses[2].location}></ExpenseItem1>
-    
+{arrayOfObject}
     </div>
   );
 }
