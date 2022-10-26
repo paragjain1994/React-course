@@ -1,5 +1,6 @@
 
 import ExpenseItem1 from './components/ExpenseItem1';
+import Expenses from './components/Expenses';
 
 function App() {
   const expenses = [           // array of object that is const expenses = [ {},{}.....]
@@ -32,16 +33,11 @@ function App() {
   }
 ];  
 
-const arrayOfObject =[];
-for(let i=0;i<expenses.length;i++){
-  const items_=  <ExpenseItem1 title = {expenses[i].title} amount = {expenses[i].amount} date = {expenses[i].date} location = {expenses[i].location}></ExpenseItem1>;
 
-  arrayOfObject.push(items_);
-}
   return (
 
-    <div>
-{arrayOfObject}
+    <div >
+<Expenses items={expenses}></Expenses>
     </div>
   );
 }
