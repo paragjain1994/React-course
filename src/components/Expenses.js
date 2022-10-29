@@ -1,8 +1,13 @@
+// invoked from App.js comp
+import React , {useState} from 'react';
 import './Expenses.css';
 import ExpenseItem1 from './ExpenseItem1';
+import Card from './Card';
+import ExpensesFilter from './ExpensesFilter';
 
 function Expenses(props){
-console.log("hello Expenses");
+const [filteredYear, setFilteredYear] = useState('2020');
+console.log('filtered yr before..'+ filteredYear);
 console.log(props.items.length);
 
   const arrayOfObject =[];
@@ -12,16 +17,22 @@ console.log(props.items.length);
      arrayOfObject.push(items_);
    }
 
+   const dropdownYearHandler =(selectedYear)=>{
+    console.log(selectedYear);
+    setFilteredYear(selectedYear);        // setFilteredYear function behaves asynchronously
+    console.log('filtered yr after..'+ filteredYear);
+   }
+
     return(
-
-
-
-    <div className="expenses">
-
-        {arrayOfObject}
-
-    </div>
-    )
+      <div>
+      <Card className="expenses">
+      <ExpensesFilter dropdownYear ={dropdownYearHandler} selected ={filteredYear}></ExpensesFilter>
+      {arrayOfObject}
+      </Card>
+      </div>
+)
+   
+    
 }
 
 export default Expenses;
