@@ -22,12 +22,16 @@ console.log('length of array '+props.items.length);
    // console.log('filtered yr after..'+ filteredYear);
    }
 
+   const filteredExpenses = props.items.filter(expense =>{
+    return new Date(expense.date).getFullYear().toString === filteredYear;
+   })
+
     return(
       
       <Card className="expenses">
       <ExpensesFilter dropdownYear ={dropdownYearHandler} selected ={filteredYear}></ExpensesFilter>
       {/* {arrayOfObject} */}
-      {props.items.map((expense)=>(
+      {filteredExpenses.map((expense)=>(
         <ExpenseItem1
           key={expense.id}
           title={expense.title}
