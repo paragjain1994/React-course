@@ -23,22 +23,29 @@ console.log('length of array '+props.items.length);
    }
 
    const filteredExpenses = props.items.filter(expense =>{
-    return new Date(expense.date).getFullYear().toString === filteredYear;
+    console.log(expense,filteredYear);
+    return expense.date.getFullYear().toString() == filteredYear;
    })
 
+   let expensesContent = <p>No expenses found!</p>
+
+   if(filteredExpenses.length > 0){
+    expensesContent = filteredExpenses.map((expense)=>(
+      <ExpenseItem1
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ))
+   }
+
     return(
-      
-      <Card className="expenses">
+       <Card className="expenses">
       <ExpensesFilter dropdownYear ={dropdownYearHandler} selected ={filteredYear}></ExpensesFilter>
       {/* {arrayOfObject} */}
-      {filteredExpenses.map((expense)=>(
-        <ExpenseItem1
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
+
+      {expensesContent}
       </Card>
       
 )
