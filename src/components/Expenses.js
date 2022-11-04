@@ -4,6 +4,7 @@ import './Expenses.css';
 import ExpensesList from './ExpensesList';
 import Card from './Card';
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesChart from './ExpensesChart';
 
 function Expenses(props){
 const [filteredYear, setFilteredYear] = useState('2020');
@@ -38,7 +39,7 @@ console.log('length of array '+props.items.length);
     return(
        <Card className="expenses">
       <ExpensesFilter dropdownYear ={dropdownYearHandler} selected ={filteredYear}></ExpensesFilter>
-  
+      <ExpensesChart expenses={filteredExpenses}></ExpensesChart>
       <ExpensesList items={filteredExpenses}></ExpensesList>
       </Card>
       

@@ -1,51 +1,52 @@
-import React , {useState} from 'react';
-import Expenses from './components/Expenses';
-import NewExpense from './components/NewExpense';
+import React, { useState } from "react";
+import Expenses from "./components/Expenses";
+import NewExpense from "./components/NewExpense";
 
-const DUMMY_EXPENSES = [           // array of object that is const expenses = [ {},{}.....]
+const DUMMY_EXPENSES = [
+  // array of object that is const expenses = [ {},{}.....]
   {
-    id: 'e1',
-    title: 'Toilet Paper',
+    id: "e1",
+    title: "Toilet Paper",
     amount: 94.12,
     date: new Date(2020, 7, 14),
-    location: 'Delhi',
+    location: "Delhi",
   },
-  { id: 'e2', 
-  title: 'New TV', 
-  amount: 799.49, 
-  date: new Date(2021, 2, 12) ,
-  location: 'Manali',
-},
   {
-    id: 'e3',
-    title: 'Car Insurance',
+    id: "e2",
+    title: "New TV",
+    amount: 799.49,
+    date: new Date(2021, 2, 12),
+    location: "Manali",
+  },
+  {
+    id: "e3",
+    title: "Car Insurance",
     amount: 294.67,
     date: new Date(2021, 2, 28),
-    location: 'Mumbai',
+    location: "Mumbai",
   },
   {
-    id: 'e4',
-    title: 'New Desk (Wooden)',
+    id: "e4",
+    title: "New Desk (Wooden)",
     amount: 450,
     date: new Date(2021, 5, 12),
-    location: 'Goa',
-  }
-];  
+    location: "Goa",
+  },
+];
 function App() {
-  const [expenses,setExpenses]=useState(DUMMY_EXPENSES);
-  
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  console.log(expenses);
 
-const addExpenseHandler = (expense)=>{
-  console.log(expense);
-  const updatedExpense =[expense, ...expenses];
-  setExpenses(updatedExpense);
-}
+  const addExpenseHandler = (expense) => {
+    console.log(expense);
+    const updatedExpense = [...expenses, expense]; // adding new expense to the bottom of the list
+    // const updatedExpense =[expense, ...expenses]; adding new expense to the top of the list
+    setExpenses(updatedExpense);
+  };
   return (
-
-    <div >
-      <NewExpense onAddExpense = {addExpenseHandler}></NewExpense>
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
       <Expenses items={expenses}></Expenses>
-
     </div>
   );
 }

@@ -1,9 +1,12 @@
+// invoked from expenses.js comp
 import React from 'react';
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
   const dropdownChangeHandler = (event) =>{
-    console.log(event.target.value);
+   // console.log(event.target.value);
+   
+   // seleted year is being passed to parent component Expenses.js
     props.dropdownYear(event.target.value);
     
   }
